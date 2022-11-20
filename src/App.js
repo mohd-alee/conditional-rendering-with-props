@@ -1,25 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import Login from './screens/Login';
+import Signup from './screens/Signup';
+import LoginMessage from './components/LoginMessage';
+import SignupMessage from './components/SignupMessage';
+import { useState } from 'react';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  const [screen,setScreen] = useState('login');
+
+  return <>
+    <div className='bg-dark vh-100'>
+      <div className='container'>
+      <div className='row align-content-center vh-100'>
+        <div className='offset-md-3 col-md-6'>
+          { (screen == 'login') ? <><Login/> <SignupMessage setScreen={setScreen}/></> : <><Signup/> <LoginMessage setScreen={setScreen}/></> }
+        </div>
+      </div>
     </div>
-  );
+    </div>
+  </>;
 }
 
 export default App;
